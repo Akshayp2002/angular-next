@@ -3,6 +3,7 @@ import BentoTile from "@/components/BentoTile";
 import IntroTile from "@/components/tiles/home/IntroTile";
 import GitHubTile from "@/components/tiles/home/GitHubTile";
 import TechStackTile from "@/components/tiles/home/TechStackTile";
+import ThemeToggleTile from "./components/tiles/home/ThemeToggleTile";
 
 export default function Home() {
   return (
@@ -31,7 +32,7 @@ export default function Home() {
         {/* Row 2 */}
         {/* Light/Dark (Square) */}
         <BentoTile className="col-span-1 h-[400px] lg:h-[300px]">
-           <div className="bg-white w-full h-full flex items-center justify-center text-gray-500 italic">Theme Toggle</div>
+          <ThemeToggleTile />
         </BentoTile>
 
         {/* Instagram (Square) */}
