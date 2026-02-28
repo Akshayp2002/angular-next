@@ -16,7 +16,7 @@ export default function ToolsPage() {
                 {toolsData.map((tool, index) => (
                     <BentoTile
                         key={index}
-                        className="col-span-1 h-[400px] lg:h-[300px]"
+                        className="col-span-1"
                     >
                         <TechTiles
                             name={tool.name}
