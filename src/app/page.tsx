@@ -12,7 +12,7 @@ export default function Home() {
         Note the h- mobile vs h- desktop.
       */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 grid-flow-row-dense max-w-[1200px] w-full">
-        
+
         {/* Row 1 */}
         {/* Intro (Wide) */}
         <BentoTile className="lg:col-span-2 h-[400px] lg:h-[300px]">
@@ -38,7 +38,7 @@ export default function Home() {
         {/* Instagram (Square) */}
         <BentoTile className="col-span-1 h-[400px] lg:h-[300px]">
           <div className="w-full h-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-             <div className="w-20 h-20 bg-white rounded-2xl">IG</div>
+            <div className="w-20 h-20 bg-white rounded-2xl">IG</div>
           </div>
         </BentoTile>
 
@@ -50,7 +50,7 @@ export default function Home() {
 
         {/* Project Showcase (Tall) */}
         <BentoTile className="col-span-1 lg:row-span-2 h-[400px] lg:h-[600px]">
-           <div className="bg-[#e0f7fa] w-full h-full p-8 italic text-gray-600">Project Portrait</div>
+          <div className="bg-[#e0f7fa] w-full h-full p-8 italic text-gray-600">Project Portrait</div>
         </BentoTile>
 
         {/* Black Github Square (Square) */}

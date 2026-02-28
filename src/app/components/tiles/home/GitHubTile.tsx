@@ -3,17 +3,34 @@ import Image from 'next/image';
 
 export default function GitHubTile() {
     return (
-        <div className="w-full h-full bg-gradient-to-tr from-[#161618] to-[#252a32] p-8 flex items-center justify-center">
-            {/* Replace with your accurate Github SVG logo asset */}
-            <div className="relative w-40 h-40">
-                <div className="absolute inset-0 bg-white rounded-full flex items-center justify-center">
-                    <Image
-                        src="https://raw.githubusercontent.com/github/explore/2c6872a0385209b9d0dcab73c412acc72c8e391d/topics/github/github.png"
-                        alt="GitHub logo"
-                        width={100}
-                        height={100}
-                        className="opacity-90"
-                    />
+        <div className="w-full h-full bg-gradient-to-tr from-[#161618] to-[#252a32] p-8 relative flex items-center justify-center">
+            {/* Arrow in bottom-left corner of card */}
+            <a href="https://github.com/Akshayp2002" target="_blank">
+                <div
+                    className="bg-white w-10 h-10 rounded-full absolute bottom-0 left-0 m-4 flex justify-center items-center hover:ring-4 ring-gray-200 dark:ring-gray-400 hover:transition duration-400 ease-in-out"
+                >
+                    <svg id="Arrow.7" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 18.256 18.256"
+                    >
+                        <g id="Group_7" data-name="Group 7" transform="translate(5.363 5.325)">
+                            <path id="Path_10" data-name="Path 10" d="M14.581,7.05,7.05,14.581"
+                                transform="translate(-7.05 -7.012)" fill="none" stroke="#0D1117" strokeLinecap="round"
+                                strokeLinejoin="round" strokeWidth="1.5"></path>
+                            <path id="Path_11" data-name="Path 11" d="M10,7l5.287.037.038,5.287"
+                                transform="translate(-7.756 -7)" fill="none" stroke="#0D1117" strokeLinecap="round"
+                                strokeLinejoin="round" strokeWidth="1.5"></path>
+                        </g>
+                        <path id="Path_12" data-name="Path 12" d="M0,0H18.256V18.256H0Z" fill="none"></path>
+                    </svg>
+                </div>
+            </a>
+            {/* Centered GitHub icon */}
+            <div className="flex items-center justify-center w-full h-full">
+                <div className="bg-black rounded-[30px] flex items-center justify-center p-20 h-[280px] hover:shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="160" width="160" viewBox="-74.4 -120.90175 644.8 725.4105"
+                        fill="#ffffff">
+                        <path
+                            d="M165.9 389.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2 .6-2-1.3-4.3-4.3-5.2-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 0C106.1 0 0 105.3 0 244c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5 21.3 0 42.8 2.9 62.8 8.5 0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 449.8 496 354.9 496 244 496 105.3 383.5 0 244.8 0zM97.2 344.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
+                    </svg>
                 </div>
             </div>
         </div>

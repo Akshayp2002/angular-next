@@ -1,11 +1,19 @@
 "use client";
 
-import React from "react";
+// Removed duplicate React import
 import styled from "styled-components";
 import { useTheme } from '../../../theme-provider';
 
+import React, { useEffect, useState } from "react";
+// ...existing code...
+
 const ThemeToggleTile = () => {
   const { theme, toggleTheme } = useTheme();
+  const [isHydrated, setIsHydrated] = useState(false);
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
+  if (!isHydrated) return null;
   return (
     <StyledWrapper>
       <div>
@@ -76,7 +84,7 @@ const StyledWrapper = styled.div`
     background-color: inherit;
     -webkit-box-shadow: 0 4px 35px rgba(0,0,0,.1);
     box-shadow: 0 4px 35px rgba(0,0,0,.1);
-    border-radius: 40px;
+    border-radius: 32px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

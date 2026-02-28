@@ -8,9 +8,9 @@ interface BentoTileProps {
 
 export default function BentoTile({ children, className = "" }: BentoTileProps) {
     return (
-        <div className={`p-3 w-full ${className}`}>
+        <div className={`p-2 w-full ${className}`}>
             {/* The inner card handles the design shell */}
-            <div className="w-full h-full bg-white rounded-[2.5rem] lg:rounded-[3rem] border border-gray-100 dark:border-none shadow-sm overflow-hidden relative">
+            <div className="w-full h-full bg-white rounded-[2rem] border border-gray-100 dark:border-none shadow-sm overflow-hidden relative">
                 {children}
             </div>
         </div>

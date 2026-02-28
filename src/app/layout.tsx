@@ -22,8 +22,7 @@ export default function RootLayout({
           <HomeNav />
           {children}
           <footer className="text-center py-6 text-sm text-gray-500">
-            <p>Made with Angular and Tailwind ❤️</p>
-            <p>@Akshay 2025 - Inspired by nevflynn</p>
+            <p>Made with Next.js ❤️</p>
           </footer>
         </ThemeProvider>
       </body>
