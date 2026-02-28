@@ -240,14 +240,14 @@ const StyledWrapper = styled.div`
     color: white;
   }
   [type="checkbox"]:checked + .app .body {
-    background-color: #26242E;
+    background-color: #0D1117;
     color: white;
   }
   [type="checkbox"]:checked + .app .crescent {
     -webkit-transform: scale(1);
     -ms-transform: scale(1);
     transform: scale(1);
-    background: #26242E;
+    background: #0D1117;
   }
   [type="checkbox"]:checked + .app .circle {
     background: linear-gradient(40deg, #8983F7, #A3DAFB 70%);
