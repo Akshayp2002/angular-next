@@ -6,8 +6,8 @@ interface Project {
     description: string;
     image: string;
     tech: { name: string; image: string }[];
-    view?: string;
-    github?: string;
+    view?: string | boolean;
+    github: string | boolean;
     personal?: boolean;
     workStatus?: boolean;
     date?: string;
