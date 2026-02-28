@@ -25,7 +25,9 @@ export default function Home() {
                 </BentoTile>
                 <BentoTile className="col-span-1 h-[400px] lg:h-[300px]">
                     <div className="w-full h-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center dark:bg-[#0d1117]">
-                        <div className="w-20 h-20 bg-white rounded-2xl dark:bg-[#0d1117]">IG</div>
+                        <div className="">
+                            <img src="/instagram.svg" alt="Instagram Logo" width={80} height={80} className="w-full h-full object-cover rounded-2xl" />
+                        </div>
                     </div>
                 </BentoTile>
                 <BentoTile className="md:col-span-2 h-[400px] lg:h-[300px]">
