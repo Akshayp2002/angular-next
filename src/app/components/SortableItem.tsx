@@ -20,7 +20,7 @@ export function SortableItem({ id, className = "", children }: SortableItemProps
 
     const style = {
         transform: CSS.Translate.toString(transform),
-        transition, // Use dnd-kit's built-in transition for stability
+        transition,
         zIndex: isDragging ? 0 : 1,
     };
 
@@ -30,11 +30,17 @@ export function SortableItem({ id, className = "", children }: SortableItemProps
             style={style}
             {...attributes}
             {...listeners}
-            className={`touch-none relative outline-none ${className}`}
+            className={`touch-none relative outline-none rounded-4xl ${className}`}
         >
+            {/* PLACEMENT INDICATOR: Shown only when this specific item is being dragged */}
+            {isDragging && (
+                <div className="absolute inset-0 bg-gray-200/50 dark:bg-gray-800/50 rounded-4xl border-2 border-dashed border-gray-300 dark:border-gray-700 z-0" />
+            )}
+
+            {/* ACTUAL CONTENT: Hidden while dragging so it doesn't overlay */}
             <div
-                className="w-full h-full transition-opacity duration-200"
-                style={{ opacity: isDragging ? 0.3 : 1 }}
+                className={`w-full h-full transition-opacity duration-300 ${isDragging ? "opacity-0" : "opacity-100"
+                    }`}
             >
                 {children}
             </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
     DndContext,
     closestCorners,
@@ -89,7 +89,7 @@ function DraggedItemOverlay({ id }: { id: string }) {
 
     return (
         <div style={{ width: activeNodeRect.width, height: activeNodeRect.height }}>
-            <BentoTile className="w-full h-full cursor-grabbing rounded-4xl shadow-2xl scale-105">
+            <BentoTile className="w-full h-full cursor-grabbing rounded-4xl ">
                 {tile.content}
             </BentoTile>
         </div>
@@ -100,21 +100,20 @@ export default function HomeInner() {
     const [items, setItems] = useState(() => Object.keys(TILE_CONFIG));
     const [activeId, setActiveId] = useState<string | null>(null);
     const [isMounted, setIsMounted] = useState(false);
+    const lastUpdate = useRef<number>(0);
 
     useEffect(() => {
         setIsMounted(true);
     }, []);
 
     const sensors = useSensors(
-        useSensor(PointerSensor, { activationConstraint: { distance: 8 } })
+        useSensor(PointerSensor, { activationConstraint: { distance: 10 } })
     );
 
     const handleDragStart = (event: DragStartEvent) => {
         setActiveId(event.active.id.toString());
     };
 
-    // THIS IS THE KEY: We update the items state WHILE dragging 
-    // so items slide into position.
     const handleDragOver = (event: DragOverEvent) => {
         const { active, over } = event;
         if (!over) return;
@@ -123,54 +122,48 @@ export default function HomeInner() {
         const overId = over.id.toString();
 
         if (activeId !== overId) {
-            setItems((prevItems) => {
-                const oldIndex = prevItems.indexOf(activeId);
-                const newIndex = prevItems.indexOf(overId);
-                return arrayMove(prevItems, oldIndex, newIndex);
-            });
+            const now = Date.now();
+            if (now - lastUpdate.current > 150) {
+                setItems((prev) => {
+                    const oldIndex = prev.indexOf(activeId);
+                    const newIndex = prev.indexOf(overId);
+                    return arrayMove(prev, oldIndex, newIndex);
+                });
+                lastUpdate.current = now;
+            }
         }
     };
 
     const handleDragEnd = () => {
         setActiveId(null);
+        lastUpdate.current = 0;
     };
 
     if (!isMounted) return null;
 
     return (
         <main className="min-h-screen py-5 flex justify-center overflow-hidden">
-            <div className="max-w-[1200px] w-full p-4">
+            <div className="max-w-[1200px] w-full p-4 relative">
                 <DndContext
-                    id="bento-grid-dnd"
+                    id="final-stable-bento"
                     sensors={sensors}
-                    collisionDetection={closestCorners} // Corners is better for grid shifting
+                    collisionDetection={closestCorners}
                     onDragStart={handleDragStart}
-                    onDragOver={handleDragOver} // Moving reorder logic here
+                    onDragOver={handleDragOver}
                     onDragEnd={handleDragEnd}
                     modifiers={[restrictToWindowEdges, restrictToParentElement]}
                 >
                     <SortableContext items={items} strategy={rectSortingStrategy}>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 grid-flow-row-dense gap-4 w-full auto-rows-min">
-                            {items.map((id) => {
-                                const tile = TILE_CONFIG[id];
-                                return (
-                                    <SortableItem key={id} id={id} className={tile.className}>
-                                        <div className="w-full h-full">{tile.content}</div>
-                                    </SortableItem>
-                                );
-                            })}
+                            {items.map((id) => (
+                                <SortableItem key={id} id={id} className={TILE_CONFIG[id].className}>
+                                    {TILE_CONFIG[id].content}
+                                </SortableItem>
+                            ))}
                         </div>
                     </SortableContext>
 
-                    <DragOverlay
-                        dropAnimation={{
-                            duration: 250,
-                            easing: "ease-out",
-                            sideEffects: defaultDropAnimationSideEffects({
-                                styles: { active: { opacity: "0.4" } },
-                            }),
-                        }}
-                    >
+                    <DragOverlay adjustScale={false}>
                         {activeId ? <DraggedItemOverlay id={activeId} /> : null}
                     </DragOverlay>
                 </DndContext>
