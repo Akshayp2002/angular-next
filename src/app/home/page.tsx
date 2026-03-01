@@ -30,15 +30,14 @@ import IntroTile from "@/components/tiles/home/IntroTile";
 import GitHubTile from "@/components/tiles/home/GitHubTile";
 import TechStackTile from "@/components/tiles/home/TechStackTile";
 import ThemeToggleTile from "@/components/tiles/home/ThemeToggleTile";
+import MapTile from "@/components/tiles/home/MapTile";
 
 const TILE_CONFIG: Record<string, { className: string; content: React.ReactNode }> = {
     intro: { className: "md:col-span-2 lg:col-span-2 h-75", content: <IntroTile /> },
     mapView: {
         className: "col-span-1 h-75",
         content: (
-            <div className="bg-[#e8f5e9] w-full dark:ring-2 dark:ring-gray-700 h-full flex items-center justify-center rounded-4xl text-green-900 font-medium">
-                Kozhikode Map View
-            </div>
+            <MapTile/>
         ),
     },
     techStack: { className: "col-span-1 lg:row-span-2 h-155", content: <TechStackTile /> },
