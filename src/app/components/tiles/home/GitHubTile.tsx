@@ -25,7 +25,7 @@ export default function GitHubTile() {
             </a>
             {/* Centered GitHub icon */}
             <div className="flex items-center justify-center w-full h-full">
-                <div className="rounded-[30px] flex items-center justify-center p-20 h-[280px] hover:shadow-lg">
+                <div className="rounded-[30px] flex items-center justify-center p-20 h-[280px]">
                     <svg xmlns="http://www.w3.org/2000/svg" height="160" width="160" viewBox="-74.4 -120.90175 644.8 725.4105"
                         fill="#ffffff">
                         <path

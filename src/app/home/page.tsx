@@ -25,12 +25,12 @@ import {
 } from "@dnd-kit/modifiers";
 import { SortableItem } from "@/components/SortableItem";
 
-import BentoTile from "@/components/BentoTile";
 import IntroTile from "@/components/tiles/home/IntroTile";
 import GitHubTile from "@/components/tiles/home/GitHubTile";
 import TechStackTile from "@/components/tiles/home/TechStackTile";
 import ThemeToggleTile from "@/components/tiles/home/ThemeToggleTile";
 import MapTile from "@/components/tiles/home/MapTile";
+import SocialTile from "@/components/tiles/home/SocialsTile";
 
 const TILE_CONFIG: Record<string, { className: string; content: React.ReactNode }> = {
     intro: { className: "md:col-span-2 lg:col-span-2 h-75", content: <IntroTile /> },
@@ -44,9 +44,7 @@ const TILE_CONFIG: Record<string, { className: string; content: React.ReactNode 
     themeToggle: { className: "col-span-1 h-75", content: <ThemeToggleTile /> },
     instagram: {
         className: "col-span-1 h-75",
-        content: (
-            <div className="w-full h-full bg-gradient-to-br from-purple-600 to-pink-500 rounded-4xl" />
-        ),
+        content: <SocialTile />,
     },
     blog: {
         className: "md:col-span-2 h-75",
@@ -87,10 +85,13 @@ function DraggedItemOverlay({ id }: { id: string }) {
     if (!tile || !activeNodeRect) return null;
 
     return (
-        <div style={{ width: activeNodeRect.width, height: activeNodeRect.height }}>
-            <BentoTile className="w-full h-full cursor-grabbing rounded-4xl ">
+        <div
+            style={{ width: activeNodeRect.width, height: activeNodeRect.height }}
+            className="w-full h-full cursor-grabbing rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden"
+        >
+            <div className="w-full h-full rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden">
                 {tile.content}
-            </BentoTile>
+            </div>
         </div>
     );
 }

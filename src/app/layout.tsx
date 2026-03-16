@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased px-6">
+      <body suppressHydrationWarning className="antialiased px-6">
         <ThemeProvider>
           <HomeNav />
           {children}

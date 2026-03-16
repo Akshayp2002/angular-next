@@ -1,23 +1,26 @@
 "use client";
 
-import dynamic from 'next/dynamic';
-
-const MapComponent = dynamic(() => import('./MapComponent'), {
-    ssr: false,
-    loading: () => <div className="w-full h-full bg-[#e0f2f1] animate-pulse rounded-[2.5rem] lg:rounded-[3rem]" />
-});
+import Image from "next/image";
+import MapComponent from "./MapComponent";
 
 export default function MapTile() {
     return (
-        <div className="w-full h-full relative overflow-hidden rounded-[2.5rem] lg:rounded-[3rem] border border-gray-100 shadow-sm bg-[#e0f2f1]">
+        <div className="group w-full h-full relative overflow-hidden rounded-[2.5rem] lg:rounded-[3rem] border border-gray-100 shadow-sm bg-[#e0f2f1] cursor-grab active:cursor-grabbing">
             <MapComponent />
 
-            {/* Visual UI Elements stay outside the dynamic component */}
-            <div className="absolute bottom-4 right-4 z-[1000] pointer-events-none">
-                <div className="w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-gray-400">
-                    <span className="text-xl font-bold">+</span>
+            <div className="absolute inset-0 z-20 pointer-events-none flex items-center justify-center">
+                <div className="pointer-events-auto relative w-[120px] h-[120px] rounded-full bg-cyan-400/50 border border-cyan-300/70 shadow-[0_10px_30px_rgba(14,165,233,0.35)] flex items-center justify-center transition-transform duration-300 ease-out group-hover:rotate-[-10deg] group-hover:scale-105">
+                    <Image
+                        src="/head-hand.png"
+                        alt="Akshay profile"
+                        width={90}
+                        height={90}
+                        className="w-[90px] h-[90px] object-contain drop-shadow-md transition-transform duration-300 ease-out group-hover:rotate-[10deg] group-hover:translate-y-[-4px]"
+                        priority
+                    />
                 </div>
             </div>
+
         </div>
     );
 }
