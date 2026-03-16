@@ -16,7 +16,7 @@ const ICON_CARDS = [
 
 export default function TechStackTile() {
     return (
-        <div className="w-full h-full relative overflow-hidden rounded-[2.5rem] lg:rounded-[3rem] bg-white dark:bg-[#0d1117] dark:ring-2 dark:ring-gray-700">
+        <div className="w-full h-full relative overflow-hidden rounded-4xl bg-white dark:bg-[#0d1117] dark:ring-2 dark:ring-gray-700">
             <div
                 className="absolute inset-0 bg-white bg-repeat opacity-80 dark:bg-[#0d1117] dark:bg-none dark:opacity-100"
                 style={{ backgroundImage: "url('/Topographic.svg')", backgroundSize: "260px 260px" }}

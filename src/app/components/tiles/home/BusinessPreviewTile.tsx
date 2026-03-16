@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function BusinessPreviewTile() {
     return (
-        <div className="w-full h-full relative overflow-hidden rounded-[2.5rem] lg:rounded-[3rem] bg-[#f4dc93] dark:bg-[#0d1117] dark:ring-2 dark:ring-gray-700">
+        <div className="w-full h-full relative overflow-hidden rounded-4xl bg-[#f4dc93] dark:bg-[#0d1117] dark:ring-2 dark:ring-gray-700">
             <div className="absolute -top-20 -right-16 w-[48%] aspect-square bg-white/45 rounded-full dark:bg-[#0d1117]" />
             <div className="absolute -bottom-24 left-[10%] w-[38%] h-[72%] bg-[#efbdd1] rounded-[50%] dark:bg-[#0d1117]" />
 

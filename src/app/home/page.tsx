@@ -83,9 +83,9 @@ function DraggedItemOverlay({ id }: { id: string }) {
     return (
         <div
             style={{ width: activeNodeRect.width, height: activeNodeRect.height }}
-            className="w-full h-full cursor-grabbing rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden"
+            className="w-full h-full cursor-grabbing rounded-4xl overflow-hidden"
         >
-            <div className="w-full h-full rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden">
+            <div className="w-full h-full rounded-4xl overflow-hidden">
                 {tile.content}
             </div>
         </div>
@@ -96,10 +96,23 @@ export default function HomeInner() {
     const [items, setItems] = useState(() => Object.keys(TILE_CONFIG));
     const [activeId, setActiveId] = useState<string | null>(null);
     const [isMounted, setIsMounted] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
     const lastUpdate = useRef<number>(0);
 
     useEffect(() => {
         setIsMounted(true);
+    }, []);
+
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+
+        const mediaQuery = window.matchMedia("(max-width: 767px)");
+        const updateMobileState = () => setIsMobile(mediaQuery.matches);
+
+        updateMobileState();
+        mediaQuery.addEventListener("change", updateMobileState);
+
+        return () => mediaQuery.removeEventListener("change", updateMobileState);
     }, []);
 
     const sensors = useSensors(
@@ -152,7 +165,7 @@ export default function HomeInner() {
                     <SortableContext items={items} strategy={rectSortingStrategy}>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 grid-flow-row-dense gap-4 w-full auto-rows-min">
                             {items.map((id) => (
-                                <SortableItem key={id} id={id} className={TILE_CONFIG[id].className}>
+                                <SortableItem key={id} id={id} className={TILE_CONFIG[id].className} disabled={isMobile}>
                                     {TILE_CONFIG[id].content}
                                 </SortableItem>
                             ))}
@@ -160,7 +173,7 @@ export default function HomeInner() {
                     </SortableContext>
 
                     <DragOverlay adjustScale={false}>
-                        {activeId ? <DraggedItemOverlay id={activeId} /> : null}
+                        {!isMobile && activeId ? <DraggedItemOverlay id={activeId} /> : null}
                     </DragOverlay>
                 </DndContext>
             </div>

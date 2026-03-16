@@ -43,7 +43,7 @@ export default function SocialTile() {
 	}, []);
 
 	return (
-		<div className="w-full h-full relative overflow-hidden rounded-[2.5rem] lg:rounded-[3rem]">
+		<div className="w-full h-full relative overflow-hidden rounded-4xl">
 			{SLIDES.map((slide, index) => {
 				const isActive = activeIndex === index;
 

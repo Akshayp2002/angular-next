@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function ProjectDetailsTile() {
 	return (
-		<div className="w-full h-full relative overflow-hidden rounded-[2.5rem] lg:rounded-[3rem] bg-[#69ccb8] dark:bg-[#0d1117] dark:ring-2 dark:ring-gray-700">
+		<div className="w-full h-full relative overflow-hidden rounded-4xl bg-[#69ccb8] dark:bg-[#0d1117] dark:ring-2 dark:ring-gray-700">
 			<div className="absolute -top-14 right-[-24%] w-[86%] h-[40%] bg-[#9adacc] rounded-[48%] dark:bg-[#0d1117]" />
 			<div className="absolute -bottom-16 -left-14 w-[75%] h-[42%] bg-[#efbdd1] rounded-[55%] dark:bg-[#0d1117]" />
 
