@@ -152,7 +152,7 @@ export default function HomeInner() {
 
     return (
         <main className="min-h-screen py-5 flex justify-center overflow-hidden">
-            <div className="max-w-[1200px] w-full p-4 relative">
+            <div className="max-w-[1200px] w-full px-4 relative">
                 <DndContext
                     id="final-stable-bento"
                     sensors={sensors}

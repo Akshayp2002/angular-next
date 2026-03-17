@@ -51,8 +51,8 @@ export default function ProjectPage() {
     };
 
     return (
-        <div className="min-h-screen py-3 flex justify-center">
-            <div className="w-full max-w-300 p-4">
+        <main className="min-h-screen py-5 flex justify-center">
+            <div className="w-full max-w-300 px-4">
                 <DndContext
                     sensors={sensors}
                     collisionDetection={closestCenter}
@@ -94,6 +94,6 @@ export default function ProjectPage() {
                     </DragOverlay>
                 </DndContext>
             </div>
-        </div >
+        </main>
     );
 }

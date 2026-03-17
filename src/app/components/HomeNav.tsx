@@ -6,6 +6,14 @@ const links = ["Home", "About", "Tools", "Projects", "Blog"];
 
 export default function HomeNav() {
     const pathname = usePathname();
+    const activeIndex = Math.max(
+        0,
+        links.findIndex((link) => {
+            const url = `/${link.toLowerCase()}`;
+            return pathname === url || pathname.startsWith(`${url}/`);
+        })
+    );
+
     return (
         <div className="flex flex-col items-center w-full">
             {/* 1. SVG Logo - Centered on mobile, left on desktop */}
@@ -37,27 +45,24 @@ export default function HomeNav() {
 
             {/* 2. Centered Pill Menu - reduced width on mobile */}
             <nav className="w-full flex justify-center">
-                <ul className="relative flex items-center gap-1 p-2 bg-[#eeeeee] dark:bg-[#0d1117] rounded-full ring-2 ring-transparent dark:ring-gray-700 md:max-w-[400px] max-w-[310px] w-full">
+                <ul className="relative grid grid-cols-5 items-center p-1 bg-[#eeeeee] dark:bg-[#0d1117] rounded-full ring-2 ring-transparent dark:ring-gray-700 md:max-w-[400px] max-w-[310px] w-full">
                     {/* Animated active indicator */}
                     <div
-                        className="absolute top-2 h-[calc(100%-1rem)] rounded-full bg-white dark:bg-gray-700 z-0 transition-all duration-300  text-white"
+                        className="absolute left-1 top-1 h-[calc(100%-0.5rem)] rounded-full bg-white dark:bg-[#1f2732] z-0 transition-transform duration-300 ease-out"
                         style={{
-                            width: `calc(100%/${links.length})`,
-                            transform: `translateX(${links.findIndex(link => {
-                                const url = `/${link.toLowerCase()}`;
-                                return pathname === url;
-                            }) * 93}%)`,
+                            width: `calc((100% - 0.5rem)/${links.length})`,
+                            transform: `translateX(${activeIndex * 100}%)`,
                         }}
                     />
-                    {links.map((link, idx) => {
+                    {links.map((link) => {
                         const url = `/${link.toLowerCase()}`;
-                        const isActive = pathname === url;
+                        const isActive = pathname === url || pathname.startsWith(`${url}/`);
                         return (
-                            <li key={link} className="relative z-10 w-full flex justify-center">
+                            <li key={link} className="relative z-10 w-full">
                                 <Link
                                     href={url}
-                                    className={`md:px-4 py-2 rounded-full font-semibold text-sm transition-all duration-200 font-[geometric,sans-serif] w-full text-center
-                                        ${isActive ? "text-gray-900 dark:text-white dark:bg-gray-700" : "text-gray-600 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-white"}`}
+                                    className={`block w-full text-center rounded-full px-1 py-2 font-semibold text-sm font-[geometric,sans-serif] transition-colors duration-200
+                                        ${isActive ? "text-gray-900 dark:text-white" : "text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"}`}
                                 >
                                     {link}
                                 </Link>

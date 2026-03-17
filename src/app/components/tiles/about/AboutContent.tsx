@@ -9,7 +9,8 @@ import {
   FiCode,
 } from "react-icons/fi";
 import { FaQuoteLeft } from "react-icons/fa6";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { careersData, type CareerEntry, type CareerProject } from "@/components/tiles/about/careers";
 
@@ -97,6 +98,18 @@ function SectionCard({
   );
 }
 
+function ModalPortal({ children }: { children: React.ReactNode }) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
+  return createPortal(children, document.body);
+}
+
 export default function AboutContent() {
   const [isTimelineOpen, setIsTimelineOpen] = useState(false);
   const [selectedCareer, setSelectedCareer] = useState<CareerEntry | null>(null);
@@ -109,11 +122,24 @@ export default function AboutContent() {
   const previewExperience = useMemo(() => careersData.slice(0, 2), []);
   const previewEducation = useMemo(() => education.slice(0, 2), []);
 
+  useEffect(() => {
+    const isAnyModalOpen = Boolean(selectedCareer || projectCarousel || isTimelineOpen);
+    const previousOverflow = document.body.style.overflow;
+
+    if (isAnyModalOpen) {
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [selectedCareer, projectCarousel, isTimelineOpen]);
+
   return (
-    <main className="min-h-screen py-4 md:py-5 flex justify-center">
+    <main className="min-h-screen py-5 flex justify-center">
       <div className="max-w-[1200px] w-full px-4">
         <div className="grid grid-cols-1 gap-5">
-          <section className="rounded-4xl bg-white p-4 dark:bg-[#0d1117] dark:ring-2 dark:ring-gray-700 sm:p-5 md:h-75 md:px-10 lg:px-16">
+          <section className="min-h-75 rounded-4xl bg-white p-4 dark:bg-[#0d1117] dark:ring-2 dark:ring-gray-700 sm:p-5 md:px-10 lg:px-16">
             <div className="h-full flex flex-col justify-center font-[Quicksand,sans-serif]">
               <div className="flex items-center gap-6 mb-3">
                 <div className="relative w-24 h-24 shrink-0">
@@ -253,8 +279,9 @@ export default function AboutContent() {
       </div>
 
       {selectedCareer && (
-        <div className="fixed inset-0 z-[120] flex items-center justify-center bg-black/45 p-4 backdrop-blur-sm">
-          <div className="w-full max-w-4xl rounded-4xl border border-gray-200 bg-[#f8fafc] shadow-2xl dark:border-gray-700 dark:bg-[#0d1117]">
+        <ModalPortal>
+          <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/45 p-4 backdrop-blur-sm modal-backdrop-enter">
+          <div className="w-full max-w-4xl rounded-4xl border border-gray-200 bg-[#f8fafc] shadow-2xl dark:border-gray-700 dark:bg-[#0d1117] modal-content-enter">
             <div className="flex items-center justify-between border-b border-gray-200 px-4 py-4 dark:border-gray-700 sm:px-5 md:px-6">
               <div className="flex items-center gap-3 min-w-0">
                 <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-2xl border border-gray-300 bg-white dark:border-gray-600 dark:bg-[#111821]">
@@ -355,12 +382,14 @@ export default function AboutContent() {
               </section>
             </div>
           </div>
-        </div>
+          </div>
+        </ModalPortal>
       )}
 
       {projectCarousel && (
-        <div className="fixed inset-0 z-[140] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm">
-          <div className="w-full max-w-5xl rounded-3xl border border-gray-300 bg-white p-3 dark:border-gray-600 dark:bg-[#0d1117]">
+        <ModalPortal>
+          <div className="fixed inset-0 z-[1020] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm modal-backdrop-enter">
+          <div className="w-full max-w-5xl rounded-3xl border border-gray-300 bg-white p-3 dark:border-gray-600 dark:bg-[#0d1117] modal-content-enter">
             <div className="mb-3 flex items-center justify-between gap-3 px-1">
               <div>
                 <h4 className="text-sm font-semibold text-gray-900 dark:text-white sm:text-base">
@@ -427,12 +456,14 @@ export default function AboutContent() {
               )}
             </div>
           </div>
-        </div>
+          </div>
+        </ModalPortal>
       )}
 
       {isTimelineOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/45 p-4 backdrop-blur-sm">
-          <div className="w-full max-w-3xl rounded-4xl border border-gray-200 bg-white p-4 shadow-2xl dark:border-gray-700 dark:bg-[#0d1117] sm:p-5 md:p-6">
+        <ModalPortal>
+          <div className="fixed inset-0 z-[1010] flex items-center justify-center bg-black/45 p-4 backdrop-blur-sm modal-backdrop-enter">
+          <div className="w-full max-w-3xl rounded-4xl border border-gray-200 bg-white p-4 shadow-2xl dark:border-gray-700 dark:bg-[#0d1117] modal-content-enter sm:p-5 md:p-6">
             <div className="flex items-center justify-between gap-3">
               <h3 className="text-lg font-bold text-gray-900 dark:text-white sm:text-xl">Career & Studies Timeline</h3>
               <button
@@ -518,7 +549,8 @@ export default function AboutContent() {
                   ))}
             </div>
           </div>
-        </div>
+          </div>
+        </ModalPortal>
       )}
     </main>
   );

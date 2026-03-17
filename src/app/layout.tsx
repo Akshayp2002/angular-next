@@ -5,6 +5,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import HomeNav from "@/components/HomeNav";
 import ThemeProvider from "./theme-provider";
+import PageTransition from "./page-transition";
+import DelayedFooter from "@/delayed-footer";
 
 export const metadata: Metadata = {
   title: "Akshay | Software Developer",
@@ -21,10 +23,8 @@ export default function RootLayout({
       <body suppressHydrationWarning className="antialiased px-6">
         <ThemeProvider>
           <HomeNav />
-          {children}
-          <footer className="text-center py-6 text-sm text-gray-500">
-            <p>Made with Next.js ❤️</p>
-          </footer>
+          <PageTransition>{children}</PageTransition>
+          <DelayedFooter />
         </ThemeProvider>
       </body>
     </html>
