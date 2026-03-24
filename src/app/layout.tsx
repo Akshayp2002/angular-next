@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning className="antialiased px-6">
+      <body suppressHydrationWarning className="antialiased px-6 hide-scrollbar">
         <ThemeProvider>
           <HomeNav />
           <PageTransition>{children}</PageTransition>

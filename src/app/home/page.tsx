@@ -32,6 +32,7 @@ import MapTile from "@/components/tiles/home/MapTile";
 import SocialTile from "@/components/tiles/home/SocialsTile";
 import ProjectDetailsTile from "@/components/tiles/home/ProjectDetailsTile";
 import BusinessPreviewTile from "@/components/tiles/home/BusinessPreviewTile";
+import ContactTile from "@/components/tiles/home/ContactTile";
 
 const TILE_CONFIG: Record<string, { className: string; content: React.ReactNode }> = {
     intro: { className: "md:col-span-2 lg:col-span-2 h-75", content: <IntroTile /> },
@@ -66,11 +67,7 @@ const TILE_CONFIG: Record<string, { className: string; content: React.ReactNode 
     },
     contact: {
         className: "md:col-span-2 h-75",
-        content: (
-            <div className="bg-white w-full h-full p-8 rounded-4xl border border-gray-100">
-                Contact Footer Content
-            </div>
-        ),
+        content: <ContactTile />,
     },
 };
 
@@ -147,7 +144,6 @@ export default function HomeInner() {
                             strategy: MeasuringStrategy.Always,
                         },
                     }}
-                    modifiers={[restrictToParentElement]}
                 >
                     <SortableContext items={items} strategy={rectSortingStrategy}>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full auto-rows-min">
