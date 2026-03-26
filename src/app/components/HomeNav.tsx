@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 const links = ["Home", "About", "Tools", "Projects", "Blog"];
 
@@ -15,36 +16,14 @@ export default function HomeNav() {
     );
 
     return (
-        <div className="flex flex-col items-center w-full">
-            {/* 1. SVG Logo - Centered on mobile, left on desktop */}
-            <div className="w-[140px] h-10 flex items-center select-none dark:bg-[#0d1117] mb-2 sm:mb-0 sm:mr-auto">
-                <svg viewBox="0 0 1000 400" preserveAspectRatio="xMinYMid meet" className="w-full h-full">
-                    <defs>
-                        <linearGradient id="akshayGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" style={{ stopColor: "#ff3b71", stopOpacity: 1 }} />
-                            <stop offset="30%" style={{ stopColor: "#9146ff", stopOpacity: 1 }} />
-                            <stop offset="65%" style={{ stopColor: "#ff7d2a", stopOpacity: 1 }} />
-                            <stop offset="100%" style={{ stopColor: "#ffc233", stopOpacity: 1 }} />
-                        </linearGradient>
-                    </defs>
-                    <text
-                        x="0"
-                        y="220"
-                        dominantBaseline="middle"
-                        textAnchor="start"
-                        fontFamily="Quicksand, sans-serif"
-                        fontSize="320"
-                        fontWeight="700"
-                        fill="url(#akshayGradient)"
-                        style={{ letterSpacing: "-0.05em" }}
-                    >
-                        Akshay
-                    </text>
-                </svg>
+        <div className="relative flex flex-col items-center w-full py-2 sm:py-0">
+            {/* 1. SVG Logo - Top on mobile, Absolute Left on desktop */}
+            <div className="flex items-center select-none mb-4 sm:mb-0 sm:absolute sm:left-0 sm:top-1/2 sm:-translate-y-1/2">
+                <Image src="/logo.svg" alt="Logo" width={170} height={100} className="w-[140px] h-auto" />
             </div>
 
-            {/* 2. Centered Pill Menu - reduced width on mobile */}
-            <nav className="w-full flex justify-center">
+            {/* 2. Centered Pill Menu */}
+            <nav className="w-full flex justify-center items-center sm:h-20">
                 <ul className="relative grid grid-cols-5 items-center p-1 bg-[#eeeeee] dark:bg-[#0d1117] rounded-full ring-2 ring-transparent dark:ring-gray-700 md:max-w-[400px] max-w-[310px] w-full">
                     {/* Animated active indicator */}
                     <div
@@ -72,9 +51,9 @@ export default function HomeNav() {
                 </ul>
             </nav>
 
-            {/* 3. Right-aligned Contact Link - hidden on mobile */}
-            <div className="font-semibold text-sm text-gray-900 cursor-pointer hover:opacity-70 transition-opacity hidden sm:block">
-                {/* <span className={`font-[geometric,sans-serif]`}>Contact</span> */}
+            {/* 3. Right side placeholder for future content - Absolute Right on desktop */}
+            <div className="hidden sm:flex items-center sm:absolute sm:right-0 sm:top-1/2 sm:-translate-y-1/2">
+                {/* Future content goes here */}
             </div>
         </div>
     );
