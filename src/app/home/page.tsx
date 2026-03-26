@@ -33,6 +33,7 @@ import SocialTile from "@/components/tiles/home/SocialsTile";
 import ProjectDetailsTile from "@/components/tiles/home/ProjectDetailsTile";
 import BusinessPreviewTile from "@/components/tiles/home/BusinessPreviewTile";
 import ContactTile from "@/components/tiles/home/ContactTile";
+import BlogTile from "@/components/tiles/home/BlogTile";
 
 const TILE_CONFIG: Record<string, { className: string; content: React.ReactNode }> = {
     intro: { className: "md:col-span-2 lg:col-span-2 h-75", content: <IntroTile /> },
@@ -54,11 +55,7 @@ const TILE_CONFIG: Record<string, { className: string; content: React.ReactNode 
     },
     blog: {
         className: "md:col-span-2 h-75",
-        content: (
-            <div className="bg-[#ffeb38] w-full h-full p-8 rounded-4xl text-black">
-                Blog Journey Content
-            </div>
-        ),
+        content: <BlogTile />,
     },
     github: { className: "col-span-1 h-75", content: <GitHubTile /> },
     business: {

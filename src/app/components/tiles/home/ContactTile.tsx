@@ -58,72 +58,78 @@ export default function ContactTile() {
                 <div className="relative bottom-4 w-[320px] h-[190px] origin-bottom sm:scale-100 scale-90 flex justify-center flex-col items-center">
                     
                     {/* ENVELOPE BACK INTERIOR */}
-                    <div className="absolute bottom-0 w-[320px] h-[170px] bg-gradient-to-b from-[#e1e1e1] to-[#ebebeb] dark:from-zinc-900 dark:to-zinc-950 rounded-b-[24px] shadow-[inset_0_15px_30px_rgba(0,0,0,0.08)] overflow-hidden">
-                        <div className="absolute inset-x-0 top-0 h-[60%] bg-gradient-to-b from-black/[0.04] to-transparent dark:from-black/40"></div>
+                    <div className="absolute bottom-0 w-[320px] h-[180px] bg-[#f0f0f0] dark:bg-[#0d0d0d] rounded-b-[24px] shadow-[inset_0_15px_30px_rgba(0,0,0,0.02)] overflow-hidden">
+                        <div className="absolute inset-x-0 top-0 h-[80%] bg-gradient-to-b from-black/[0.05] to-transparent dark:from-black/70"></div>
+                        
+                        {/* THE BACK FLAP TRIANGLE (Behiend cards) - Taller and more visible */}
+                        <div className="absolute top-[-150px] left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-[#fdfdfd] dark:bg-[#1a1a1a] rotate-45 rounded-[14px] border border-black/5 dark:border-white/10 shadow-[0_4px_25px_rgba(0,0,0,0.06)]"></div>
                     </div>
 
                     {/* MAIL CARDS */}
                     
-                    {/* Purple / Blue Card (Back) */}
-                    <div className="absolute left-[20px] bottom-[80px] z-10 h-[115px] w-[160px] -rotate-[6deg] rounded-[16px] bg-gradient-to-br from-[#6f5ef5] to-[#5a48ea] px-4 py-3 text-white shadow-[0_5px_15px_rgba(111,94,245,0.4)] transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-[15px] group-hover:-translate-x-3 group-hover:-rotate-[10deg]">
-                        <div className="flex items-center justify-between text-[11px] text-white/80 font-medium tracking-wide">
+                    {/* Purple Card (Back) */}
+                    <div className="absolute left-[35px] bottom-[70px] z-10 h-[110px] w-[170px] -rotate-[8deg] rounded-[18px] bg-[#6358ff] px-4 py-3.5 text-white shadow-[0_8px_20px_rgba(99,88,255,0.15)] transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-[15px] group-hover:-translate-x-3 group-hover:-rotate-[10deg]">
+                        <div className="flex items-center justify-between text-[11px] text-white/90 font-medium tracking-tight">
                             <span>Inbox</span>
-                            <span>✦</span>
+                            <span className="text-[12px] opacity-80">✦</span>
                         </div>
                         <div className="absolute bottom-3 left-4">
-                            <div className="text-[12px] text-white/70 mb-0.5">Contact</div>
-                            <div className="text-[20px] font-semibold leading-none tracking-tight">Let’s talk</div>
+                            <div className="text-[18px] font-semibold leading-none tracking-tight">New Message</div>
                         </div>
                     </div>
 
-                    {/* Orange Card (Middle / Front-ish) */}
-                    <div className="absolute left-[80px] bottom-[100px] z-20 h-[125px] w-[180px] rotate-[2deg] rounded-[16px] bg-gradient-to-br from-[#ff6e40] to-[#f45520] px-4 py-3 text-white shadow-[0_10px_20px_rgba(255,110,64,0.35)] transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-[25px] group-hover:-translate-x-1 group-hover:rotate-[4deg]">
-                        <div className="flex items-center justify-between text-[11px] text-white/80 font-medium tracking-wide border-b border-white/10 pb-1 mb-2">
-                            <span>Email</span>
-                            <span className="font-bold tracking-tighter">Inbox</span>
+                    {/* Orange Card (Middle) */}
+                    <div className="absolute left-[80px] bottom-[95px] z-20 h-[120px] w-[185px] rotate-[4deg] rounded-[18px] bg-[#ff6c3e] px-4 py-3.5 text-white shadow-[0_12px_25px_rgba(255,108,62,0.2)] transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-[25px] group-hover:-translate-x-1 group-hover:rotate-[6deg]">
+                        <div className="flex items-center justify-between text-[11px] text-white/90 font-medium tracking-tight">
+                            <span>Reach Out</span>
+                            <span className="text-[14px] opacity-80 italic">✦</span>
                         </div>
                         <div className="absolute bottom-3 left-4">
-                            <div className="text-[12px] text-white/80 mb-0.5 font-medium">devakshay.app</div>
-                            <div className="text-[26px] font-semibold leading-none tracking-tight">hello@</div>
+                            <div className="text-[20px] font-semibold leading-none tracking-tight">Collaboration</div>
                         </div>
                     </div>
 
-                    {/* White Card (Front / Right) */}
-                    <div className="absolute right-[25px] bottom-[75px] z-30 h-[115px] w-[160px] rotate-[10deg] rounded-[16px] bg-white dark:bg-[#fcfcfc] px-4 py-3 text-zinc-800 shadow-[0_10px_20px_rgba(0,0,0,0.18)] border border-black/5 transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-[15px] group-hover:translate-x-3 group-hover:rotate-[15deg]">
-                        <div className="flex items-center justify-between text-[11px] text-zinc-500 font-medium tracking-wide">
-                            <span>Say Hi</span>
-                            <div className="flex -space-x-1">
-                                <span className="h-3 w-3 rounded-full bg-zinc-800/80 z-10"></span>
-                                <span className="h-3 w-3 rounded-full bg-zinc-400/80 mixed-blend-multiply"></span>
+                    {/* White Card (Front) */}
+                    <div className="absolute right-[25px] bottom-[70px] z-30 h-[105px] w-[170px] rotate-[10deg] rounded-[18px] bg-white dark:bg-[#fcfcfc] px-4 py-3.5 text-zinc-800 shadow-[0_12px_25px_rgba(0,0,0,0.08)] border border-black/5 transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-[15px] group-hover:translate-x-3 group-hover:rotate-[12deg]">
+                        <div className="flex items-center justify-between text-[11px] text-zinc-500 font-medium tracking-tight">
+                            <span>Say Hi!</span>
+                            <div className="flex -space-x-1.5 opacity-60">
+                                <span className="h-3.5 w-3.5 rounded-full bg-zinc-800/90 z-10"></span>
+                                <span className="h-3.5 w-3.5 rounded-full bg-zinc-400/80"></span>
                             </div>
                         </div>
                         <div className="absolute bottom-3 left-4">
-                            <div className="text-[12px] text-zinc-500 mb-0.5">Reply ~24h</div>
-                            <div className="text-[20px] font-semibold leading-none text-zinc-800 tracking-tight">Contact</div>
+                            <div className="text-[20px] font-bold leading-none text-zinc-800 tracking-tight">Hi! ✦</div>
                         </div>
                     </div>
 
                     {/* ENVELOPE FRONT FLAPS (Z-40) */}
-                    <div className="absolute bottom-0 w-[320px] h-[170px] z-40 pointer-events-none drop-shadow-[0_-8px_20px_rgba(0,0,0,0.06)] dark:drop-shadow-[0_-8px_15px_rgba(0,0,0,0.4)]">
-                        <div className="relative w-full h-[170px] rounded-b-[24px] overflow-hidden shadow-[0_15px_25px_-5px_rgba(0,0,0,0.12),0_8px_10px_-6px_rgba(0,0,0,0.08)] dark:shadow-[0_15px_25px_-5px_rgba(0,0,0,0.4),0_8px_10px_-6px_rgba(0,0,0,0.2)]">
+                    <div className="absolute bottom-0 w-[320px] h-[180px] z-40 pointer-events-none">
+                        <div className="relative w-full h-[180px] rounded-b-[24px] overflow-hidden">
                             
                             {/* Left pointed flap */}
                             <div 
-                                className="absolute left-[-110px] top-[-30px] w-[240px] h-[240px] rotate-45 rounded-[36px] bg-gradient-to-br from-[#fdfdfd] to-[#f4f4f4] dark:from-zinc-800 dark:to-zinc-900 shadow-[5px_-5px_15px_rgba(0,0,0,0.05)] border-t border-r border-black/5 dark:border-white/5" 
+                                className="absolute left-[-160px] top-[5px] w-[240px] h-[280px] rotate-45 rounded-[36px] bg-[#f9f9f9] dark:bg-[#1e1e1e] shadow-[2px_-2px_10px_rgba(0,0,0,0.02)] border-t border-r border-black/5 dark:border-white/5" 
                             ></div>
                             
                             {/* Right pointed flap */}
                             <div 
-                                className="absolute right-[-110px] top-[-30px] w-[240px] h-[240px] -rotate-45 rounded-[36px] bg-gradient-to-bl from-[#f2f2f2] to-[#e8e8e8] dark:from-zinc-800 dark:to-zinc-900 shadow-[-5px_-5px_15px_rgba(0,0,0,0.05)] border-t border-l border-black/5 dark:border-white/5" 
+                                className="absolute right-[-160px] top-[5px] w-[240px] h-[280px] -rotate-45 rounded-[36px] bg-[#fdfdfd] dark:bg-[#222222] shadow-[-2px_-2px_10px_rgba(0,0,0,0.02)] border-t border-l border-black/5 dark:border-white/5" 
                             ></div>
                             
                             {/* Bottom angled flap overlapping left & right flaps */}
                             <div 
-                                className="absolute bottom-[-220px] left-1/2 -translate-x-1/2 w-[320px] h-[320px] rotate-45 rounded-[46px] bg-gradient-to-t from-white to-[#fbfbfb] dark:from-zinc-900 dark:to-zinc-800 shadow-[0_-5px_20px_rgba(0,0,0,0.05)] dark:shadow-[0_-5px_20px_rgba(0,0,0,0.3)] border-t border-l border-black/[0.03] dark:border-white/5" 
+                                className="absolute bottom-[-277px] left-1/2 -translate-x-1/2 w-[320px] h-[320px] rotate-45 rounded-[17px] bg-white dark:bg-[#252525] border-t border-l border-black/[0.03] dark:border-white/5" 
                             ></div>
 
                         </div>
                     </div>
+
+                    {/* SIDE SHADOWS (No bottom shadow) */}
+                    {/* Left Shadow */}
+                    <div className="absolute -left-14 -bottom-6 w-[120px] h-[160px] bg-black/[0.05] dark:bg-black/40 blur-[50px] rounded-[50%] z-0 rotate-[10deg]"></div>
+                    {/* Right Shadow */}
+                    <div className="absolute -right-14 -bottom-6 w-[120px] h-[160px] bg-black/[0.05] dark:bg-black/40 blur-[50px] rounded-[50%] z-0 -rotate-[10deg]"></div>
 
                 </div>
             </div>

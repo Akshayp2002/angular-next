@@ -7,7 +7,7 @@ export default function BusinessPreviewTile() {
             <div className="absolute -top-20 -right-16 w-[48%] aspect-square bg-white/45 rounded-full dark:bg-[#0d1117]" />
             <div className="absolute -bottom-24 left-[10%] w-[38%] h-[72%] bg-[#efbdd1] rounded-[50%] dark:bg-[#0d1117]" />
 
-            <div className="absolute top-[18%] left-[17%] w-[68%] aspect-[16/9] -rotate-[31deg] rounded-[2.3rem] bg-[#f8f8f8] shadow-[0_22px_42px_rgba(15,23,42,0.18)] overflow-hidden">
+            <div className="absolute top-[18%] left-[17%] w-[68%] aspect-[16/9] -rotate-[31deg] rounded-[2rem] bg-[#f8f8f8] shadow-[0_22px_42px_rgba(15,23,42,0.18)] overflow-hidden">
                 <Image
                     src="/projects/hinez.webp"
                     alt="Business app preview"
