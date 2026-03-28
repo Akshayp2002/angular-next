@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🍱 Bento-Style Personal Portfolio (Angular-Next)
 
-## Getting Started
+A cutting-edge, interactive personal portfolio built with **Next.js 16 (App Router)** and **TypeScript**. This project features a high-performance **Bento Grid** layout with drag-and-drop capabilities, integrated with modern CMS and backend services.
 
-First, run the development server:
+## ✨ Key Features
+
+- **Interactive Bento Grid**: A fully draggable and reorderable layout using **@dnd-kit**.
+- **Dynamic Content**: Blogs and articles powered by **Contentful CMS**.
+- **Backend Power**: Testimonies and form submissions handled by **Supabase**.
+- **Modern Styling**: Styled with a mix of **Styled-components** and **Tailwind CSS**.
+- **Interactive Maps**: Geographic location data displayed using **Leaflet**.
+- **Theme Support**: Seamless Dark and Light mode transitions.
+- **Micro-interactions**: Smooth page transitions and hover effects for a premium feel.
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript
+- **Styling**: Styled-components, Tailwind CSS (v4)
+- **Icons**: React Icons
+
+### Animation & Interaction
+- **Drag & Drop**: `@dnd-kit/core`, `@dnd-kit/sortable`
+- **Transitions**: Native CSS & Custom Page Transitions
+
+### Services & API
+- **CMS**: Contentful
+- **Backend/Database**: Supabase
+- **Maps**: Leaflet & React-Leaflet
+- **Email**: Nodemailer
+
+---
+
+## 🏗️ Implementation Details
+
+### Interactive Grid
+The core of the portfolio is the **Bento Grid** located in `src/app/home/page.tsx`. It utilizes the `@dnd-kit` library to create a sortable layout of individual tiles. Each tile is a standalone component, allowing for a modular and maintainable structure.
+
+### Service Integrations
+- **Supabase**: Used for fetching and submitting user testimonials. See `src/app/lib/supabase` for client configuration.
+- **Contentful**: Manages blog post content, providing a headless CMS experience.
+- **Leaflet**: Provides interactive map views for showcasing geographic interests or locations.
+- **Nodemailer**: Configured to process contact form submissions directly from the portfolio.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v18 or higher recommended)
+- npm or yarn
+
+### Installation
+
+```bash
+git clone <your-repo-url>
+cd angular-next
+npm install
+```
+
+### Environment Variables
+
+Create a `.env.local` file in the root directory and add the following keys:
+
+```env
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+
+# Contentful
+CONTENTFUL_SPACE_ID=your_space_id
+CONTENTFUL_ACCESS_TOKEN=your_access_token
+
+# Nodemailer
+EMAIL_SERVER_USER=your_email
+EMAIL_SERVER_PASSWORD=your_password
+```
+
+### Running the App
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see your portfolio in action.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📁 Folder Structure
 
-## Learn More
+- `src/app`: Application routes and pages (Next.js App Router).
+- `src/app/components`: Reusable UI components and grid tiles.
+- `src/app/lib`: Service client initializations (Supabase, Contentful).
+- `public`: Static assets (images, icons).
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📄 License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License - see the LICENSE file for details.
