@@ -15,6 +15,7 @@ export type CareerEntry = {
   company: string;
   period: string;
   badge: string;
+  current: boolean;
   logo: string;
   overview: string;
   myRole: string;
@@ -29,11 +30,12 @@ export const careersData: CareerEntry[] = [
     company: "iTrend Solution Pvt. Ltd.",
     period: "May 2025 - Present",
     badge: "Current",
+    current: true,
     logo: "/company/itrend.png",
     overview:
       "iTrend Solution is a forward-thinking technology company streamlining e-commerce operations through advanced automation and data-driven systems.",
     myRole:
-      "I lead development for API-driven workflows that connect Amazon Ads, SP-API, and warehouse APIs for real-time inventory synchronization and order processing. I also build AI-powered analytics dashboards and manage AWS EC2 services to keep systems scalable, secure, and highly available.",
+      "I lead development for API-driven workflows that connect Amazon Ads, SP-API, and warehouse APIs for real-time inventory synchronization and order processing. I also build AI Agents and manage AWS EC2 services to keep systems scalable, secure, and highly available.",
     projects: [
       {
         name: "iTrend Commerce",
@@ -42,16 +44,13 @@ export const careersData: CareerEntry[] = [
     ],
     skills: [
       { name: "Laravel", icon: "/tech/laravel.svg" },
+      { name: "Livewire", icon: "/tech/Livewire.svg" },
+      { name: "Bootstrap", icon: "/tech/bootstrap.svg" },
       { name: "PHP", icon: "/tech/php.svg" },
       { name: "MySQL", icon: "/tech/mysql.svg" },
-      { name: "HTML", icon: "/tech/html5.svg" },
-      { name: "CSS", icon: "/tech/css3.svg" },
-      { name: "JavaScript", icon: "/tech/js.svg" },
-      { name: "jQuery", icon: "/tech/jquery.svg" },
       { name: "AWS", icon: "/tech/aws.svg" },
       { name: "Ubuntu", icon: "/tech/ubuntu.svg" },
       { name: "Redis", icon: "/tech/redis.svg" },
-      { name: "GitHub", icon: "/tech/github.svg" },
       { name: "Ollama", icon: "/tech/ollama.svg" },
     ],
   },
@@ -61,6 +60,7 @@ export const careersData: CareerEntry[] = [
     company: "Cloudrevel Innovations Pvt. Ltd.",
     period: "Mar 2023 - Apr 2025",
     badge: "Core Team",
+    current: false,
     logo: "/company/cloudrevel.jpg",
     overview:
       "Cloudrevel builds modern SaaS products and internal platforms for fast-moving startups and growing businesses.",
@@ -84,13 +84,10 @@ export const careersData: CareerEntry[] = [
       { name: "Laravel", icon: "/tech/laravel.svg" },
       { name: "PHP", icon: "/tech/php.svg" },
       { name: "Tailwind", icon: "/tech/tailwindcss.svg" },
-      { name: "Node.js", icon: "/tech/nodejs.svg" },
-      { name: "TypeScript", icon: "/tech/typescript.svg" },
-      { name: "MongoDB", icon: "/tech/mongodb.svg" },
+      { name: "Splade", icon: "/tech/splade.svg" },
       { name: "Postman", icon: "/tech/postman.svg" },
-      { name: "Docker", icon: "/tech/docker.svg" },
-      { name: "VS Code", icon: "/tech/vscode.svg" },
       { name: "Figma", icon: "/tech/figma.svg" },
+      { name: "Jira", icon: "/tech/jira.svg" },
     ],
   },
   {
@@ -99,6 +96,7 @@ export const careersData: CareerEntry[] = [
     company: "AOF Engineering Systems LLC",
     period: "Sep 2022 - Mar 2023",
     badge: "Early Career",
+    current: false,
     logo: "/company/aof.jpg",
     overview:
       "AOF Engineering Systems LLC supports industrial and business systems with practical digital tools and technical services.",
@@ -116,13 +114,13 @@ export const careersData: CareerEntry[] = [
     ],
     skills: [
       { name: "PHP", icon: "/tech/php.svg" },
+      { name: "Laravel", icon: "/tech/laravel.svg" },
       { name: "MySQL", icon: "/tech/mysql.svg" },
       { name: "HTML", icon: "/tech/html5.svg" },
       { name: "CSS", icon: "/tech/css3.svg" },
       { name: "JavaScript", icon: "/tech/js.svg" },
       { name: "Bootstrap", icon: "/tech/bootstrap.svg" },
       { name: "GitHub", icon: "/tech/github.svg" },
-      { name: "Linux", icon: "/tech/linux.svg" },
     ],
   },
 ];

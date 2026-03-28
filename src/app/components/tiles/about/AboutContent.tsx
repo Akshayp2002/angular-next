@@ -12,7 +12,43 @@ import { FaQuoteLeft } from "react-icons/fa6";
 import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
+import styled, { keyframes } from "styled-components";
 import { careersData, type CareerEntry, type CareerProject } from "@/components/tiles/about/careers";
+
+const spinGlow = keyframes`
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+`;
+
+const GlowContainer = styled.div`
+  position: relative;
+  padding: 1px;
+  background: transparent;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  height: 100%;
+  display: flex;
+`;
+
+const GlowBorder = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 120deg,
+    #eff8ffff 150deg,
+    #c6dfffff 180deg,
+    transparent 210deg,
+    transparent 360deg
+  );
+  animation: ${spinGlow} 4s linear infinite;
+  z-index: 0;
+  filter: none;
+`;
 
 type TestimonialItem = {
   id: number;
@@ -111,7 +147,9 @@ function TestimonialSkeleton() {
   );
 }
 
-export default function AboutContent({ testimonials: initialTestimonials = [] }: { testimonials?: TestimonialItem[] }) {
+const EMPTY_TESTIMONIALS: TestimonialItem[] = [];
+
+export default function AboutContent({ testimonials: initialTestimonials = EMPTY_TESTIMONIALS }: { testimonials?: TestimonialItem[] }) {
   const [isTimelineOpen, setIsTimelineOpen] = useState(false);
   const [selectedCareer, setSelectedCareer] = useState<CareerEntry | null>(null);
   const [projectCarousel, setProjectCarousel] = useState<{
@@ -219,7 +257,7 @@ export default function AboutContent({ testimonials: initialTestimonials = [] }:
                             <p className="mt-1 text-xs font-medium text-sky-700 dark:text-sky-300 truncate sm:text-sm">{item.company}</p>
                           </div>
                         </div>
-                        <span className="inline-flex shrink-0 whitespace-nowrap items-center rounded-full border border-gray-200 bg-gray-50 px-2.5 py-1 text-[11px] font-semibold text-gray-600 dark:border-gray-600 dark:bg-[#0d1117] dark:text-gray-200">
+                        <span className={`inline-flex shrink-0 whitespace-nowrap items-center rounded-full border border-gray-200 bg-gray-50 px-2.5 py-1 text-[11px] font-semibold text-gray-600 dark:border-gray-600 dark:bg-[#0d1117] dark:text-gray-200 ${item.current ? "ring-1 ring-green-500 text-green-500" : ""}`}>
                           {item.badge}
                         </span>
                       </div>
@@ -287,25 +325,27 @@ export default function AboutContent({ testimonials: initialTestimonials = [] }:
                 </>
               ) : testimonials.length > 0 ? (
                 testimonials.map((item) => (
-                  <article
-                    key={item.id}
-                    className="h-full rounded-3xl border border-gray-200/80 bg-[#f8fafc] p-4 dark:border-gray-700 dark:bg-[#111821] sm:p-5 flex flex-col"
-                  >
-                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#94a3b8] ring-1 ring-gray-200 dark:bg-[#0d1117] dark:text-[#cbd5e1] dark:ring-gray-600">
-                      <FaQuoteLeft className="h-4 w-4" />
-                    </div>
-                    <p className="mt-4 text-xs leading-5 text-gray-700 dark:text-gray-200 sm:text-sm sm:leading-6">
-                      {item.quote}
-                    </p>
-                    <div className="mt-auto pt-1">
-                      <h3 className="text-sm font-semibold tracking-tight text-gray-900 dark:text-white sm:text-base">
-                        - {item.name}
-                      </h3>
-                      <p className="mt-1 text-[11px] text-gray-500 dark:text-gray-400 sm:text-xs">
-                        {item.position} {item.company ? `• ${item.company}` : ""}
+                  <GlowContainer key={item.id}>
+                    <GlowBorder />
+                    <article
+                      className="group relative z-10 h-full rounded-[calc(1.5rem-1px)] border border-gray-200/80 bg-[#f8fafc] p-4 dark:border-gray-700 dark:bg-[#111821] sm:p-5 flex flex-col overflow-hidden"
+                    >
+                      <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#94a3b8] ring-1 ring-gray-200 dark:bg-[#0d1117] dark:text-[#cbd5e1] dark:ring-gray-600">
+                        <FaQuoteLeft className="h-4 w-4" />
+                      </div>
+                      <p className="mt-4 text-xs leading-5 text-gray-700 dark:text-gray-200 sm:text-sm sm:leading-6">
+                        {item.quote}
                       </p>
-                    </div>
-                  </article>
+                      <div className="mt-auto pt-1">
+                        <h3 className="text-sm font-semibold tracking-tight text-gray-900 dark:text-white sm:text-base">
+                          - {item.name}
+                        </h3>
+                        <p className="mt-1 text-[11px] text-gray-500 dark:text-gray-400 sm:text-xs">
+                          {item.position} {item.company ? `• ${item.company}` : ""}
+                        </p>
+                      </div>
+                    </article>
+                  </GlowContainer>
                 ))
               ) : (
                 <div className="col-span-1 md:col-span-2 xl:col-span-3 text-center py-10 text-gray-500">
@@ -566,7 +606,7 @@ export default function AboutContent({ testimonials: initialTestimonials = [] }:
                             <p className="mt-1 text-sm font-medium text-sky-700 dark:text-sky-300 truncate">{item.company}</p>
                           </div>
                         </div>
-                        <span className="inline-flex shrink-0 whitespace-nowrap items-center rounded-full border border-gray-200 bg-gray-50 px-2.5 py-1 text-[11px] font-semibold text-gray-600 dark:border-gray-600 dark:bg-[#0d1117] dark:text-gray-200">
+                        <span className={`inline-flex shrink-0 whitespace-nowrap items-center rounded-full border border-gray-200 bg-gray-50 px-2.5 py-1 text-[11px] font-semibold text-gray-600 dark:border-gray-600 dark:bg-[#0d1117] dark:text-gray-200 ${item.current ? "ring-1 ring-green-500 text-green-500" : ""}`}>
                           {item.badge}
                         </span>
                       </div>
