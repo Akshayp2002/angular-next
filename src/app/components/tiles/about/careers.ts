@@ -24,13 +24,35 @@ export type CareerEntry = {
 };
 
 export const careersData: CareerEntry[] = [
+
+  {
+    id: "mcs",
+    role: "Software Engineer",
+    company: "Mayura Consultancy Services.",
+    period: "June 2026 - Present",
+    badge: "Current",
+    current: true,
+    logo: "/company/mcs.jpg",
+    overview:
+      "Mayura Consultancy Services (MCS) is a leading software consulting and development firm that delivers end-to-end digital transformation solutions to clients across various industries.",
+    myRole:
+      "Software Engineer",
+    projects: [
+    ],
+    skills: [
+      { name: "Laravel", icon: "/tech/laravel.svg" },
+      { name: "Bootstrap", icon: "/tech/bootstrap.svg" },
+      { name: "PHP", icon: "/tech/php.svg" },
+      { name: "MySQL", icon: "/tech/mysql.svg" },
+    ],
+  },
   {
     id: "itrend",
     role: "Software Engineer",
     company: "iTrend Solution Pvt. Ltd.",
-    period: "May 2025 - Present",
-    badge: "Current",
-    current: true,
+    period: "May 2025 - May 2026",
+    badge: "Lead Developer",
+    current: false,
     logo: "/company/itrend.png",
     overview:
       "iTrend Solution is a forward-thinking technology company streamlining e-commerce operations through advanced automation and data-driven systems.",
