@@ -1,5 +1,35 @@
 export const projectsData = [
   {
+    name: "Scheduler List",
+    description:
+      "A real-time dashboard package for  Laravel's task scheduler. Track every Artisan command running, what's next, and trigger tasks on demand. Echo output streams live.",
+    image: "/projects/scheduler.png",
+    github: "https://github.com/Akshayp2002/scheduler-list-laravel",
+    view: "https://scheduler.devakshay.app/",
+    workStatus: true,
+    date: "May - 2026",
+    demo: false,
+    personal: false,
+    tech: [
+      {
+        name: "PHP",
+        image: "/tech/php.svg",
+      },
+      {
+        name: "Tailwind",
+        image: "/tech/tailwindcss.svg",
+      },
+      {
+        name: "Laravel",
+        image: "/tech/laravel.svg",
+      },
+      {
+        name: "Spatie",
+        image: "/tech/spatie.svg",
+      },
+    ],
+  },
+  {
     name: "Portfolio",
     description:
       "A personal portfolio website designed to display my development skills and projects. This highlights my proficiency in Angular, and more.",
@@ -185,40 +215,40 @@ export const projectsData = [
       },
     ],
   },
-  // {
-  //   name: "Home Lab System",
-  //   description:
-  //     "The Home Lab System is a self-hosted setup in my house, using an old computer to run private services with Docker and other software solutions.",
-  //   image: "/projects/homelabs.webp",
-  //   github: "https://github.com/Akshayp2002/homelab/tree/main",
-  //   view: false,
-  //   workStatus: true,
-  //   date: "January - 2025",
-  //   demo: false,
-  //   personal: true,
-  //   tech: [
-  //     {
-  //       name: "Docker",
-  //       image: "/tech/docker.svg",
-  //     },
-  //     {
-  //       name: "Jellyfin",
-  //       image: "/tech/jellyfin.svg",
-  //     },
-  //     {
-  //       name: "Tailscale",
-  //       image: "/tech/tailscale.svg",
-  //     },
-  //     {
-  //       name: "Immich",
-  //       image: "/tech/immich.svg",
-  //     },
-  //     {
-  //       name: "Linux",
-  //       image: "/tech/linux.svg",
-  //     },
-  //   ],
-  // },
+  {
+    name: "Home Lab System",
+    description:
+      "The Home Lab System is a self-hosted setup in my house, using an old computer to run private services with Docker and other software solutions.",
+    image: "/projects/homelabs.webp",
+    github: "https://github.com/Akshayp2002/homelab/tree/main",
+    view: false,
+    workStatus: true,
+    date: "January - 2025",
+    demo: false,
+    personal: true,
+    tech: [
+      {
+        name: "Docker",
+        image: "/tech/docker.svg",
+      },
+      {
+        name: "Jellyfin",
+        image: "/tech/jellyfin.svg",
+      },
+      {
+        name: "Tailscale",
+        image: "/tech/tailscale.svg",
+      },
+      {
+        name: "Immich",
+        image: "/tech/immich.svg",
+      },
+      {
+        name: "Linux",
+        image: "/tech/linux.svg",
+      },
+    ],
+  },
   {
     name: "Quotes Generator",
     description:
